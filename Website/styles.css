@@ -1,0 +1,74 @@
+:root {
+    /* Color Variables */
+    --solid-red:rgb(177,2,2);
+    --transparent-red:rgba(177,2,2,0.92);
+    --highlight-red: rgba(180, 2, 2, 0.92);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.upper-body {
+    height: 97%;
+}
+
+header {
+    height: 8%;
+    width: 100%;
+    background-color: var(--transparent-red);
+}
+
+.bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    height: 50px;
+}
+
+.container{
+    height: 100%;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0;
+    width: 100px;
+    color: #eee;
+}
+
+.navbar-brand:hover {
+    background-color: var(--highlight-red);
+    color: #eee;
+}
+
+.content {
+    height: calc(100% - 50px); /* leave room for the lower body by subtracting the navbar */
+    display: flex;
+}
+
+.map {
+    width: 70%;
+    background-color: #ccc;
+}
+
+.garage-info {
+    width: 30%;
+    background-color: #ddd
+}
+
+.lower-body {
+    height: 3%;
+    background-color: #484d51;
+}
