@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parkify</title>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -21,10 +21,14 @@
         </header>
         <article class="content">
             <div class="map">
-                map area
+                <h2>map area</h2>
+                <canvas id ="map area"></canvas>
             </div>
             <div class="garage-info">
-                info area
+                <h2>info area</h2>
+                <div class="parkingStatus"></div>
+                <h3>Recent Events</h3>
+                <ul id="recentEvents"></ul>
             </div>            
         </article>
     </section>
@@ -32,6 +36,48 @@
         credits or resources
     </section>
 
-    <script src="script.js"></script>
+    <script>
+                fetch('/api/parking-status')
+            .then(response => response.json())
+            .then(data => {
+                const statusElement = document.getElementById('parkingStatus');
+                statusElement.innerHTML = `
+                    <p>Total Floors: ${data.total_floors}</p>
+                    <p>Total Cars: ${data.total_cars}</p>
+                `;
+
+                // Create chart
+                const ctx = document.getElementById('parkingChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: Object.keys(data.floor_counts),
+                        datasets: [{
+                            label: 'Cars per Floor',
+                            data: Object.values(data.floor_counts),
+                            backgroundColor: 'rgba(75, 192, 192, 0.6)'
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+
+        fetch('/api/recent-events')
+            .then(response => response.json())
+            .then(events => {
+                const eventsElement = document.getElementById('recentEvents');
+                events.forEach(event => {
+                    const li = document.createElement('li');
+                    li.textContent = `${event.event_type} on floor ${event.floor_number} at ${event.timestamp}`;
+                    eventsElement.appendChild(li);
+                });
+            });
+  </script>          
 </body>
 </html>
