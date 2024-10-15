@@ -1,32 +1,39 @@
 import sqlite3
 from datetime import datetime
 
-DB_NAME = 'ParkingLotInitializer'
+DB_NAME = 'parking.db'
 
-def init_db():
-    """Intialize Database with the neccessary tables."""
+def init_db(floors):
+    """Initialize the database with necessary tables for a multi-floor parking system."""
     conn = sqlite3.connect(DB_NAME)
     c = conn.cursor()
-
-    # Creates the parking_lots table
-    c.execute('''CREATE TABLE IF NOT EXISTS parking_lots
-                 (id INTEGER PRIMARY KEY,
-                  name TEXT NOT NULL,
-                  total_spots INTEGER NOT NULL,
-                  available_spots INTEGER NOT NULL,
-                  last_updated TIMESTAMP)''')
     
-    # Creates the parking_events table for logging
+    # Create parking_lot table
+    c.execute('''CREATE TABLE IF NOT EXISTS parking_lot
+                 (id INTEGER PRIMARY KEY,
+                  total_floors INTEGER NOT NULL,
+                  total_cars INTEGER NOT NULL)''')
+    
+    # Create floor_counts table
+    c.execute('''CREATE TABLE IF NOT EXISTS floor_counts
+                 (floor_number INTEGER PRIMARY KEY,
+                  car_count INTEGER NOT NULL)''')
+    
+    # Create parking_events table for logging
     c.execute('''CREATE TABLE IF NOT EXISTS parking_events
                  (id INTEGER PRIMARY KEY,
-                  lot_id INTEGER,
                   event_type TEXT,
-                  timestamp TIMESTAMP,
-                  FOREIGN KEY (lot_id) REFERENCES parking_lots (id))''')
+                  floor_number INTEGER,
+                  timestamp TIMESTAMP)''')
     
-    # Insert the initial parking lot data if not exists
-    c.execute('''INSERT OR IGNORE INTO parking_lots (id, name, total_spots, available_spots, last_updated)
-                 VALUES (1, 'Main Lot', 100, 100, ?)''', (datetime.now(),))
+    # Insert or update parking lot data
+    c.execute('''INSERT OR REPLACE INTO parking_lot (id, total_floors, total_cars)
+                 VALUES (1, ?, 0)''', (floors,))
+    
+    # Initialize floor counts
+    for floor in range(1, floors + 1):
+        c.execute('''INSERT OR REPLACE INTO floor_counts (floor_number, car_count)
+                     VALUES (?, 0)''', (floor,))
     
     conn.commit()
     conn.close()
