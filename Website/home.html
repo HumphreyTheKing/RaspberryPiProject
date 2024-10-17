@@ -20,12 +20,9 @@
             </div>
         </header>
         <article class="content">
-            <div class="map">
-                <h2>map area</h2>
-                <canvas id ="map area"></canvas>
-            </div>
+            <div class="map"></div> <!-- Google Map Goes Here -->
             <div class="garage-info">
-                <h2>info area</h2>
+                info area
                 <div class="parkingStatus"></div>
                 <h3>Recent Events</h3>
                 <ul id="recentEvents"></ul>
@@ -35,6 +32,7 @@
     <section class="lower-body">
         credits or resources
     </section>
+    <script src="script.js"></script>
 
     <script>
                 fetch('/api/parking-status')
