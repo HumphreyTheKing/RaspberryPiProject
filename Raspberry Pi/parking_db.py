@@ -3,7 +3,7 @@ from datetime import datetime
 
 DB_NAME = 'parking.db'
 
-def init_db(floors):
+def init_db(floors, spaces_per_floor):
     """Initialize the database with necessary tables for a multi-floor parking system."""
     conn = sqlite3.connect(DB_NAME)
     c = conn.cursor()
@@ -16,11 +16,12 @@ def init_db(floors):
         "total_cars INTEGER NOT NULL)"
     )
     
-    # Create floor_counts table
+    # Create floor_data table
     c.execute(
-        "CREATE TABLE IF NOT EXISTS floor_counts ("
+        "CREATE TABLE IF NOT EXISTS floor_data ("
         "floor_number INTEGER PRIMARY KEY, "
-        "car_count INTEGER NOT NULL)"
+        "total_spaces INTEGER NOT NULL, "
+        "occupied_spaces INTEGER NOT NULL)"
     )
     
     # Create parking_events table for logging
@@ -39,15 +40,158 @@ def init_db(floors):
         (floors,)
     )
     
-    # Initialize floor counts
-    for floor in range(1, floors + 1):
+    # Initialize floor data
+    for floor, spaces in spaces_per_floor.items():
         c.execute(
-            "INSERT OR REPLACE INTO floor_counts (floor_number, car_count) "
-            "VALUES (?, 0)", 
-            (floor,)
+            "INSERT OR REPLACE INTO floor_data (floor_number, total_spaces, occupied_spaces) "
+            "VALUES (?, ?, 0)", 
+            (floor, spaces)
         )
     
     conn.commit()
     conn.close()
 
+
     #still not complete
+
+def update_car_count(floor, change):
+    """Update the car count for a specific floor and the total count."""
+    conn = sqlite3.connect(DB_NAME)
+    c = conn.cursor()
+    
+    # Update floor occupancy
+    c.execute(
+        "UPDATE floor_data "
+        "SET occupied_spaces = occupied_spaces + ? "
+        "WHERE floor_number = ?", 
+        (change, floor)
+    )
+
+    #Update total floor count
+    c.execute(
+        "UPDATE parking_lot"
+        "SET total_cars = total_cars + ?"
+        "WHERE id + ?"
+        (change,)
+    )
+    
+    #log event
+    event_type = 'entry' if change > 0 else 'exit'
+    c.execute(
+        "INSERT INTO parking_events (event_type, floor_number, timestamp) "
+        "VALUES (?, ?, ?)"
+        (event_type, floor, datetime.now())
+    )
+    
+    conn.commit()
+    conn.close()
+    
+def move_car(from_floor, to_floor):
+    """Move a car from one floor to another."""
+    conn = sqlite3.connect(DB_NAME)
+    c = conn.cursor()
+    
+    c.execute(
+        "UPDATE floor_data"
+        "SET ccupied_spaces = occupied_spaces - 1"
+        "WHERE floor_number = ?",
+        (from_floor,)
+    )
+    
+    c.execute(
+        "UPDATE floor_data"
+        "SET ccupied_spaces = occupied_spaces + 1"
+        "WHERE floor_number = ?",
+        (to_floor,)
+    )
+    
+    c.execute(
+        "INSERT INTO parking_events (event_type, floor_number timestamp) "
+        "VALUES (?, ?, ?)",
+        (f"move_{from_floor}_to_{to_floor}", to_floor, datetime.now())
+    )
+    
+    conn.commit()
+    conn.close()
+    
+def get_parking_status():
+    """Retrieve the current status of the parking lot."""
+    conn = sqlite3.connect(DB_NAME)
+    c = conn.cursor()
+    
+    c.execute(
+        "SELECT total_floors, total_cars "
+        "FROM parking_lot "
+        "WHERE id = 1"
+    )
+    lot_info = c.fetchone()
+    
+    c.execute(
+        "SELECT floor_number, total_spaces, occupied_spaces "
+        "FROM floor_data "
+        "ORDER BY floor_number"
+    )
+    floor_data = c.fetchall()
+    
+    conn.close()
+    
+    floor_counts = {}
+    for floor, total, occupied in floor_data:
+        percentage = (occupied / total) * 100 if total > 0 else 0
+        floor_counts[floor] = {
+            'occupied': occupied,
+            'total': total,
+            'percentage': round(percentage, 2)
+        }
+    
+    return {
+        'total_floors': lot_info[0],
+        'total_cars': lot_info[1],
+        'floor_counts': floor_counts
+    }
+
+def get_recent_events(limit=10):
+    """Retrieve recent parking events."""
+    conn = sqlite3.connect(DB_NAME)
+    c = conn.cursor()
+    
+    c.execute(
+        "SELECT event_type, floor_number, timestamp "
+        "FROM parking_events "
+        "ORDER BY timestamp DESC "
+        "LIMIT ?", 
+        (limit,)
+    )
+    
+    events = [{'event_type': row[0], 'floor_number': row[1], 'timestamp': row[2]} for row in c.fetchall()]
+    conn.close()
+    
+    return events
+
+# Example usage:
+if __name__ == "__main__":
+    spaces_per_floor = {1: 10, 2: 15, 3: 20}
+    init_db(floors=3, spaces_per_floor=spaces_per_floor)
+    print("Database initialized.")
+    
+    # Simulate some parking events
+    update_car_count(1, 1)  # Car enters on floor 1
+    update_car_count(2, 1)  # Car enters on floor 2
+    move_car(1, 2)  # Car moves from floor 1 to 2
+    move_car(2, 1)  # Car moves from floor 2 to 1
+    update_car_count(1, -1)  # Car exits from floor 1
+    
+    # Get and print current status
+    status = get_parking_status()
+    print(f"\nCurrent parking lot status:")
+    print(f"Total floors: {status['total_floors']}")
+    print(f"Total cars: {status['total_cars']}")
+    print("Cars per floor:")
+    for floor, data in status['floor_counts'].items():
+        print(f"  Floor {floor}: {data['occupied']}/{data['total']} cars ({data['percentage']}%)")
+    
+    # Get and print recent events
+    events = get_recent_events()
+    print("\nRecent events:")
+    for event in events:
+        print(f"{event['event_type']} on floor {event['floor_number']} at {event['timestamp']}")\
