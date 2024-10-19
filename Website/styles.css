@@ -42,6 +42,7 @@ header {
 .navbar-brand {
     display: flex;
     align-items: center;
+    justify-content: center;
     height: 100%;
     padding: 0;
     width: 100px;
@@ -59,16 +60,38 @@ header {
 }
 
 .map {
-    width: 70%;
+    width: 65%;
     background-color: #ccc;
 }
 
 .garage-info {
-    width: 30%;
-    background-color: #ddd
+    width: 35%;
+    padding: 15px;
+    background-color: #ddd;
+    overflow: scroll;
 }
 
 .lower-body {
     height: 3%;
     background-color: #484d51;
+    color: white;
+}
+
+/* Set dimensions for smaller displays <= 960px */
+@media (max-width: 960px) {
+    .content {
+        flex-direction: column;
+    }
+    
+    .map {
+        order: 2; /* Put map below garage info */
+        width: 100%;
+        height: 50%;
+    }
+
+    .garage-info {
+        order: 1; /* Put the garage info on top of the map */
+        width: 100%;
+        height: 50%;
+    }
 }

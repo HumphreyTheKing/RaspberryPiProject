@@ -8,22 +8,25 @@ const apiKey = "AIzaSyB5GVqZRteRz2N6TwIZ20H3emFxHAOcRaw";
 let map;
 
 async function getMap() {
+    // Position center of map when loading webpage
     const position = { lat: 36.1077863, lng: -115.1453609 };
 
     const { Map } = await google.maps.importLibrary("maps");
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
     map = new Map(document.getElementsByClassName("map")[0], {
-        zoom: 15.3,
+        zoom: 15.7,
         center: position,
-        mapId: "UNLV",
+        mapId: 'deb598f8aa025a7f', // ID links to my customized map
     });
 
+    // All map markers & coordinates
     const markers = [
         { position: { lat: 36.1112, lng: -115.1401 }, title: "Cottage Grove Parking Garage"},
-        { position: { lat: 36.101942, lng: -115.1431 }, title: "Tropicana Parking Garage"}
+        { position: { lat: 36.103, lng: -115.1431 }, title: "Tropicana Parking Garage"}
     ];
 
+    // Place each marker on the map
     markers.forEach(marker => {
         new AdvancedMarkerElement({
             position: marker.position,
