@@ -64,11 +64,49 @@ header {
     background-color: #ccc;
 }
 
-.garage-info {
+.garage-area {
     width: 35%;
+    background-color: #ffffff;
+    height: 100%;
+    overflow-y: scroll; 
+}
+
+.garage-wrap{
     padding: 15px;
-    background-color: #ddd;
-    overflow: scroll;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.garage-info {
+    padding: 5px;
+    min-height: 200px;
+}
+
+.garage-info:hover {
+    background-color: rgba(240, 240, 240, 0.355);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+h2 {
+    text-align: center;
+    margin: 0;
+}
+
+hr {
+    margin: 5px;
+}
+
+.info {
+    font-size: 16px;;
+    padding: 10px;
+    height: 100px;
+}
+
+p {
+    margin: 0;
 }
 
 .lower-body {
