@@ -59,18 +59,29 @@ header {
     display: flex;
 }
 
-.map {
+/* area on the left side where the map is contained*/
+.map-area {
     width: 65%;
-    background-color: #ccc;
+    padding: 15px;
+    background-color: white;
+    border-right: solid 1px rgba(0, 0, 0, 0.038);
 }
 
+/* actual map element */
+.map {
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px 2px rgba(174, 174, 174, 0.597);
+}
+
+/* area on right side where information is */
 .garage-area {
     width: 35%;
-    background-color: #ffffff;
+    background-color: white;
     height: 100%;
     overflow-y: scroll; 
 }
-
+/* container for the information bubbles  */
 .garage-wrap{
     padding: 15px;
     height: 100%;
@@ -79,14 +90,17 @@ header {
     justify-content: space-between;
 }
 
+/* information bubbles about each parking garage */
 .garage-info {
     padding: 5px;
     min-height: 200px;
+    border-radius: 10px;
+    border: 1px solid rgba(231, 231, 231, 0.816);
+    box-shadow: 1px 1px 1px 2px rgba(240, 240, 240, 0.355);
 }
 
 .garage-info:hover {
     background-color: rgba(240, 240, 240, 0.355);
-    border-radius: 10px;
     cursor: pointer;
 }
 
@@ -109,27 +123,45 @@ p {
     margin: 0;
 }
 
+/* bar on the bottom of the page for credits or resources */
 .lower-body {
-    height: 3%;
+    height: auto;
     background-color: #484d51;
     color: white;
 }
 
 /* Set dimensions for smaller displays <= 960px */
 @media (max-width: 960px) {
+    html, body {
+       overflow: scroll;
+    }
+
+    .upper-body {
+        height: auto;
+    }
+
     .content {
         flex-direction: column;
+        height: auto;
     }
     
-    .map {
+    .map-area {
         order: 2; /* Put map below garage info */
-        width: 100%;
-        height: 40%;
+        width: auto;
+        height: 500px;
+        padding: 0;
+        overflow: visible;
+        margin-bottom: 10px;
     }
 
     .garage-area {
         order: 1; /* Put the garage info on top of the map */
         width: 100%;
-        height: 60%;
+        height: auto;
+        overflow-y: visible;
+    }
+
+    .garage-info {
+        margin-bottom: 10px;
     }
 }
