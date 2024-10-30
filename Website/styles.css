@@ -18,7 +18,7 @@ html, body {
 }
 
 .upper-body {
-    height: 97%;
+    height: 100%;
 }
 
 header {
@@ -37,6 +37,7 @@ header {
 
 .container{
     height: 100%;
+    margin-left: 10%;
 }
 
 .navbar-brand {
@@ -81,9 +82,10 @@ header {
     height: 100%;
     overflow-y: scroll; 
 }
+
 /* container for the information bubbles  */
 .garage-wrap{
-    padding: 15px;
+    padding: 10% 15px 10%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -94,6 +96,8 @@ header {
 .garage-info {
     padding: 5px;
     min-height: 200px;
+    height: 30%;
+    margin: 10px 0;
     border-radius: 10px;
     border: 1px solid rgba(231, 231, 231, 0.816);
     box-shadow: 1px 1px 1px 2px rgba(240, 240, 240, 0.355);
@@ -116,18 +120,17 @@ hr {
 .info {
     font-size: 16px;;
     padding: 10px;
-    height: 100px;
+    height: 80%;
+    overflow: hidden;
+    text-align: center;
 }
 
 p {
     margin: 0;
 }
 
-/* bar on the bottom of the page for credits or resources */
-.lower-body {
-    height: auto;
-    background-color: #484d51;
-    color: white;
+.addr {
+    font-style: italic;
 }
 
 /* Set dimensions for smaller displays <= 960px */

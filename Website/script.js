@@ -23,7 +23,8 @@ async function getMap() {
     // All map markers & coordinates
     const markers = [
         { position: { lat: 36.1112, lng: -115.1401 }, title: "Cottage Grove Parking Garage"},
-        { position: { lat: 36.103, lng: -115.1431 }, title: "Tropicana Parking Garage"}
+        { position: { lat: 36.103, lng: -115.1431 }, title: "Tropicana Parking Garage"},
+        { position: { lat: 36.10342, lng: -115.136193 }, title: "Gateway Parking Garage"}
     ];
 
     // Place each marker on the map
