@@ -7,61 +7,61 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AB863C6B2CC1A80C00FD6486 /* ParkifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB863C6A2CC1A80C00FD6486 /* ParkifyApp.swift */; };
-		AB863C6D2CC1A80C00FD6486 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB863C6C2CC1A80C00FD6486 /* ContentView.swift */; };
-		AB863C6F2CC1A80D00FD6486 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB863C6E2CC1A80D00FD6486 /* Assets.xcassets */; };
-		AB863C722CC1A80D00FD6486 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB863C712CC1A80D00FD6486 /* Preview Assets.xcassets */; };
-		AB863C7C2CC1A80D00FD6486 /* ParkifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB863C7B2CC1A80D00FD6486 /* ParkifyTests.swift */; };
-		AB863C862CC1A80D00FD6486 /* ParkifyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB863C852CC1A80D00FD6486 /* ParkifyUITests.swift */; };
-		AB863C882CC1A80D00FD6486 /* ParkifyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB863C872CC1A80D00FD6486 /* ParkifyUITestsLaunchTests.swift */; };
+		ABFBA4A82CDAC963009168FC /* UNLV_PARKIFYApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBA4A72CDAC963009168FC /* UNLV_PARKIFYApp.swift */; };
+		ABFBA4AA2CDAC963009168FC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBA4A92CDAC963009168FC /* ContentView.swift */; };
+		ABFBA4AC2CDAC963009168FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABFBA4AB2CDAC963009168FC /* Assets.xcassets */; };
+		ABFBA4AF2CDAC963009168FC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABFBA4AE2CDAC963009168FC /* Preview Assets.xcassets */; };
+		ABFBA4B92CDAC963009168FC /* UNLV_PARKIFYTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBA4B82CDAC963009168FC /* UNLV_PARKIFYTests.swift */; };
+		ABFBA4C32CDAC963009168FC /* UNLV_PARKIFYUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBA4C22CDAC963009168FC /* UNLV_PARKIFYUITests.swift */; };
+		ABFBA4C52CDAC963009168FC /* UNLV_PARKIFYUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBA4C42CDAC963009168FC /* UNLV_PARKIFYUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		AB863C782CC1A80D00FD6486 /* PBXContainerItemProxy */ = {
+		ABFBA4B52CDAC963009168FC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = AB863C5F2CC1A80C00FD6486 /* Project object */;
+			containerPortal = ABFBA49C2CDAC963009168FC /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = AB863C662CC1A80C00FD6486;
-			remoteInfo = Parkify;
+			remoteGlobalIDString = ABFBA4A32CDAC963009168FC;
+			remoteInfo = "UNLV PARKIFY";
 		};
-		AB863C822CC1A80D00FD6486 /* PBXContainerItemProxy */ = {
+		ABFBA4BF2CDAC963009168FC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = AB863C5F2CC1A80C00FD6486 /* Project object */;
+			containerPortal = ABFBA49C2CDAC963009168FC /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = AB863C662CC1A80C00FD6486;
-			remoteInfo = Parkify;
+			remoteGlobalIDString = ABFBA4A32CDAC963009168FC;
+			remoteInfo = "UNLV PARKIFY";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AB863C672CC1A80C00FD6486 /* Parkify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parkify.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB863C6A2CC1A80C00FD6486 /* ParkifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkifyApp.swift; sourceTree = "<group>"; };
-		AB863C6C2CC1A80C00FD6486 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		AB863C6E2CC1A80D00FD6486 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AB863C712CC1A80D00FD6486 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		AB863C772CC1A80D00FD6486 /* ParkifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParkifyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB863C7B2CC1A80D00FD6486 /* ParkifyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkifyTests.swift; sourceTree = "<group>"; };
-		AB863C812CC1A80D00FD6486 /* ParkifyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParkifyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB863C852CC1A80D00FD6486 /* ParkifyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkifyUITests.swift; sourceTree = "<group>"; };
-		AB863C872CC1A80D00FD6486 /* ParkifyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkifyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		ABFBA4A42CDAC963009168FC /* UNLV PARKIFY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UNLV PARKIFY.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABFBA4A72CDAC963009168FC /* UNLV_PARKIFYApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNLV_PARKIFYApp.swift; sourceTree = "<group>"; };
+		ABFBA4A92CDAC963009168FC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		ABFBA4AB2CDAC963009168FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ABFBA4AE2CDAC963009168FC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		ABFBA4B42CDAC963009168FC /* UNLV PARKIFYTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UNLV PARKIFYTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABFBA4B82CDAC963009168FC /* UNLV_PARKIFYTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNLV_PARKIFYTests.swift; sourceTree = "<group>"; };
+		ABFBA4BE2CDAC963009168FC /* UNLV PARKIFYUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UNLV PARKIFYUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABFBA4C22CDAC963009168FC /* UNLV_PARKIFYUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNLV_PARKIFYUITests.swift; sourceTree = "<group>"; };
+		ABFBA4C42CDAC963009168FC /* UNLV_PARKIFYUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNLV_PARKIFYUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		AB863C642CC1A80C00FD6486 /* Frameworks */ = {
+		ABFBA4A12CDAC963009168FC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AB863C742CC1A80D00FD6486 /* Frameworks */ = {
+		ABFBA4B12CDAC963009168FC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AB863C7E2CC1A80D00FD6486 /* Frameworks */ = {
+		ABFBA4BB2CDAC963009168FC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -71,142 +71,142 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AB863C5E2CC1A80C00FD6486 = {
+		ABFBA49B2CDAC963009168FC = {
 			isa = PBXGroup;
 			children = (
-				AB863C692CC1A80C00FD6486 /* Parkify */,
-				AB863C7A2CC1A80D00FD6486 /* ParkifyTests */,
-				AB863C842CC1A80D00FD6486 /* ParkifyUITests */,
-				AB863C682CC1A80C00FD6486 /* Products */,
+				ABFBA4A62CDAC963009168FC /* UNLV PARKIFY */,
+				ABFBA4B72CDAC963009168FC /* UNLV PARKIFYTests */,
+				ABFBA4C12CDAC963009168FC /* UNLV PARKIFYUITests */,
+				ABFBA4A52CDAC963009168FC /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		AB863C682CC1A80C00FD6486 /* Products */ = {
+		ABFBA4A52CDAC963009168FC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AB863C672CC1A80C00FD6486 /* Parkify.app */,
-				AB863C772CC1A80D00FD6486 /* ParkifyTests.xctest */,
-				AB863C812CC1A80D00FD6486 /* ParkifyUITests.xctest */,
+				ABFBA4A42CDAC963009168FC /* UNLV PARKIFY.app */,
+				ABFBA4B42CDAC963009168FC /* UNLV PARKIFYTests.xctest */,
+				ABFBA4BE2CDAC963009168FC /* UNLV PARKIFYUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AB863C692CC1A80C00FD6486 /* Parkify */ = {
+		ABFBA4A62CDAC963009168FC /* UNLV PARKIFY */ = {
 			isa = PBXGroup;
 			children = (
-				AB863C6A2CC1A80C00FD6486 /* ParkifyApp.swift */,
-				AB863C6C2CC1A80C00FD6486 /* ContentView.swift */,
-				AB863C6E2CC1A80D00FD6486 /* Assets.xcassets */,
-				AB863C702CC1A80D00FD6486 /* Preview Content */,
+				ABFBA4A72CDAC963009168FC /* UNLV_PARKIFYApp.swift */,
+				ABFBA4A92CDAC963009168FC /* ContentView.swift */,
+				ABFBA4AB2CDAC963009168FC /* Assets.xcassets */,
+				ABFBA4AD2CDAC963009168FC /* Preview Content */,
 			);
-			path = Parkify;
+			path = "UNLV PARKIFY";
 			sourceTree = "<group>";
 		};
-		AB863C702CC1A80D00FD6486 /* Preview Content */ = {
+		ABFBA4AD2CDAC963009168FC /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				AB863C712CC1A80D00FD6486 /* Preview Assets.xcassets */,
+				ABFBA4AE2CDAC963009168FC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		AB863C7A2CC1A80D00FD6486 /* ParkifyTests */ = {
+		ABFBA4B72CDAC963009168FC /* UNLV PARKIFYTests */ = {
 			isa = PBXGroup;
 			children = (
-				AB863C7B2CC1A80D00FD6486 /* ParkifyTests.swift */,
+				ABFBA4B82CDAC963009168FC /* UNLV_PARKIFYTests.swift */,
 			);
-			path = ParkifyTests;
+			path = "UNLV PARKIFYTests";
 			sourceTree = "<group>";
 		};
-		AB863C842CC1A80D00FD6486 /* ParkifyUITests */ = {
+		ABFBA4C12CDAC963009168FC /* UNLV PARKIFYUITests */ = {
 			isa = PBXGroup;
 			children = (
-				AB863C852CC1A80D00FD6486 /* ParkifyUITests.swift */,
-				AB863C872CC1A80D00FD6486 /* ParkifyUITestsLaunchTests.swift */,
+				ABFBA4C22CDAC963009168FC /* UNLV_PARKIFYUITests.swift */,
+				ABFBA4C42CDAC963009168FC /* UNLV_PARKIFYUITestsLaunchTests.swift */,
 			);
-			path = ParkifyUITests;
+			path = "UNLV PARKIFYUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AB863C662CC1A80C00FD6486 /* Parkify */ = {
+		ABFBA4A32CDAC963009168FC /* UNLV PARKIFY */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AB863C8B2CC1A80D00FD6486 /* Build configuration list for PBXNativeTarget "Parkify" */;
+			buildConfigurationList = ABFBA4C82CDAC963009168FC /* Build configuration list for PBXNativeTarget "UNLV PARKIFY" */;
 			buildPhases = (
-				AB863C632CC1A80C00FD6486 /* Sources */,
-				AB863C642CC1A80C00FD6486 /* Frameworks */,
-				AB863C652CC1A80C00FD6486 /* Resources */,
+				ABFBA4A02CDAC963009168FC /* Sources */,
+				ABFBA4A12CDAC963009168FC /* Frameworks */,
+				ABFBA4A22CDAC963009168FC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Parkify;
-			productName = Parkify;
-			productReference = AB863C672CC1A80C00FD6486 /* Parkify.app */;
+			name = "UNLV PARKIFY";
+			productName = "UNLV PARKIFY";
+			productReference = ABFBA4A42CDAC963009168FC /* UNLV PARKIFY.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AB863C762CC1A80D00FD6486 /* ParkifyTests */ = {
+		ABFBA4B32CDAC963009168FC /* UNLV PARKIFYTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AB863C8E2CC1A80D00FD6486 /* Build configuration list for PBXNativeTarget "ParkifyTests" */;
+			buildConfigurationList = ABFBA4CB2CDAC963009168FC /* Build configuration list for PBXNativeTarget "UNLV PARKIFYTests" */;
 			buildPhases = (
-				AB863C732CC1A80D00FD6486 /* Sources */,
-				AB863C742CC1A80D00FD6486 /* Frameworks */,
-				AB863C752CC1A80D00FD6486 /* Resources */,
+				ABFBA4B02CDAC963009168FC /* Sources */,
+				ABFBA4B12CDAC963009168FC /* Frameworks */,
+				ABFBA4B22CDAC963009168FC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				AB863C792CC1A80D00FD6486 /* PBXTargetDependency */,
+				ABFBA4B62CDAC963009168FC /* PBXTargetDependency */,
 			);
-			name = ParkifyTests;
-			productName = ParkifyTests;
-			productReference = AB863C772CC1A80D00FD6486 /* ParkifyTests.xctest */;
+			name = "UNLV PARKIFYTests";
+			productName = "UNLV PARKIFYTests";
+			productReference = ABFBA4B42CDAC963009168FC /* UNLV PARKIFYTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		AB863C802CC1A80D00FD6486 /* ParkifyUITests */ = {
+		ABFBA4BD2CDAC963009168FC /* UNLV PARKIFYUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AB863C912CC1A80D00FD6486 /* Build configuration list for PBXNativeTarget "ParkifyUITests" */;
+			buildConfigurationList = ABFBA4CE2CDAC963009168FC /* Build configuration list for PBXNativeTarget "UNLV PARKIFYUITests" */;
 			buildPhases = (
-				AB863C7D2CC1A80D00FD6486 /* Sources */,
-				AB863C7E2CC1A80D00FD6486 /* Frameworks */,
-				AB863C7F2CC1A80D00FD6486 /* Resources */,
+				ABFBA4BA2CDAC963009168FC /* Sources */,
+				ABFBA4BB2CDAC963009168FC /* Frameworks */,
+				ABFBA4BC2CDAC963009168FC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				AB863C832CC1A80D00FD6486 /* PBXTargetDependency */,
+				ABFBA4C02CDAC963009168FC /* PBXTargetDependency */,
 			);
-			name = ParkifyUITests;
-			productName = ParkifyUITests;
-			productReference = AB863C812CC1A80D00FD6486 /* ParkifyUITests.xctest */;
+			name = "UNLV PARKIFYUITests";
+			productName = "UNLV PARKIFYUITests";
+			productReference = ABFBA4BE2CDAC963009168FC /* UNLV PARKIFYUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		AB863C5F2CC1A80C00FD6486 /* Project object */ = {
+		ABFBA49C2CDAC963009168FC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
-					AB863C662CC1A80C00FD6486 = {
+					ABFBA4A32CDAC963009168FC = {
 						CreatedOnToolsVersion = 15.4;
 					};
-					AB863C762CC1A80D00FD6486 = {
+					ABFBA4B32CDAC963009168FC = {
 						CreatedOnToolsVersion = 15.4;
-						TestTargetID = AB863C662CC1A80C00FD6486;
+						TestTargetID = ABFBA4A32CDAC963009168FC;
 					};
-					AB863C802CC1A80D00FD6486 = {
+					ABFBA4BD2CDAC963009168FC = {
 						CreatedOnToolsVersion = 15.4;
-						TestTargetID = AB863C662CC1A80C00FD6486;
+						TestTargetID = ABFBA4A32CDAC963009168FC;
 					};
 				};
 			};
-			buildConfigurationList = AB863C622CC1A80C00FD6486 /* Build configuration list for PBXProject "Parkify" */;
+			buildConfigurationList = ABFBA49F2CDAC963009168FC /* Build configuration list for PBXProject "UNLV PARKIFY" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -214,36 +214,36 @@
 				en,
 				Base,
 			);
-			mainGroup = AB863C5E2CC1A80C00FD6486;
-			productRefGroup = AB863C682CC1A80C00FD6486 /* Products */;
+			mainGroup = ABFBA49B2CDAC963009168FC;
+			productRefGroup = ABFBA4A52CDAC963009168FC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AB863C662CC1A80C00FD6486 /* Parkify */,
-				AB863C762CC1A80D00FD6486 /* ParkifyTests */,
-				AB863C802CC1A80D00FD6486 /* ParkifyUITests */,
+				ABFBA4A32CDAC963009168FC /* UNLV PARKIFY */,
+				ABFBA4B32CDAC963009168FC /* UNLV PARKIFYTests */,
+				ABFBA4BD2CDAC963009168FC /* UNLV PARKIFYUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AB863C652CC1A80C00FD6486 /* Resources */ = {
+		ABFBA4A22CDAC963009168FC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB863C722CC1A80D00FD6486 /* Preview Assets.xcassets in Resources */,
-				AB863C6F2CC1A80D00FD6486 /* Assets.xcassets in Resources */,
+				ABFBA4AF2CDAC963009168FC /* Preview Assets.xcassets in Resources */,
+				ABFBA4AC2CDAC963009168FC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AB863C752CC1A80D00FD6486 /* Resources */ = {
+		ABFBA4B22CDAC963009168FC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AB863C7F2CC1A80D00FD6486 /* Resources */ = {
+		ABFBA4BC2CDAC963009168FC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,49 +253,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		AB863C632CC1A80C00FD6486 /* Sources */ = {
+		ABFBA4A02CDAC963009168FC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB863C6D2CC1A80C00FD6486 /* ContentView.swift in Sources */,
-				AB863C6B2CC1A80C00FD6486 /* ParkifyApp.swift in Sources */,
+				ABFBA4AA2CDAC963009168FC /* ContentView.swift in Sources */,
+				ABFBA4A82CDAC963009168FC /* UNLV_PARKIFYApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AB863C732CC1A80D00FD6486 /* Sources */ = {
+		ABFBA4B02CDAC963009168FC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB863C7C2CC1A80D00FD6486 /* ParkifyTests.swift in Sources */,
+				ABFBA4B92CDAC963009168FC /* UNLV_PARKIFYTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AB863C7D2CC1A80D00FD6486 /* Sources */ = {
+		ABFBA4BA2CDAC963009168FC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB863C862CC1A80D00FD6486 /* ParkifyUITests.swift in Sources */,
-				AB863C882CC1A80D00FD6486 /* ParkifyUITestsLaunchTests.swift in Sources */,
+				ABFBA4C52CDAC963009168FC /* UNLV_PARKIFYUITestsLaunchTests.swift in Sources */,
+				ABFBA4C32CDAC963009168FC /* UNLV_PARKIFYUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		AB863C792CC1A80D00FD6486 /* PBXTargetDependency */ = {
+		ABFBA4B62CDAC963009168FC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AB863C662CC1A80C00FD6486 /* Parkify */;
-			targetProxy = AB863C782CC1A80D00FD6486 /* PBXContainerItemProxy */;
+			target = ABFBA4A32CDAC963009168FC /* UNLV PARKIFY */;
+			targetProxy = ABFBA4B52CDAC963009168FC /* PBXContainerItemProxy */;
 		};
-		AB863C832CC1A80D00FD6486 /* PBXTargetDependency */ = {
+		ABFBA4C02CDAC963009168FC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AB863C662CC1A80C00FD6486 /* Parkify */;
-			targetProxy = AB863C822CC1A80D00FD6486 /* PBXContainerItemProxy */;
+			target = ABFBA4A32CDAC963009168FC /* UNLV PARKIFY */;
+			targetProxy = ABFBA4BF2CDAC963009168FC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		AB863C892CC1A80D00FD6486 /* Debug */ = {
+		ABFBA4C62CDAC963009168FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -358,7 +358,7 @@
 			};
 			name = Debug;
 		};
-		AB863C8A2CC1A80D00FD6486 /* Release */ = {
+		ABFBA4C72CDAC963009168FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -414,14 +414,14 @@
 			};
 			name = Release;
 		};
-		AB863C8C2CC1A80D00FD6486 /* Debug */ = {
+		ABFBA4C92CDAC963009168FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Parkify/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"UNLV PARKIFY/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -434,7 +434,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ayyanmalik.Parkify;
+				PRODUCT_BUNDLE_IDENTIFIER = "ayyanmalik.UNLV-PARKIFY";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -442,14 +442,14 @@
 			};
 			name = Debug;
 		};
-		AB863C8D2CC1A80D00FD6486 /* Release */ = {
+		ABFBA4CA2CDAC963009168FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Parkify/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"UNLV PARKIFY/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -462,7 +462,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ayyanmalik.Parkify;
+				PRODUCT_BUNDLE_IDENTIFIER = "ayyanmalik.UNLV-PARKIFY";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -470,7 +470,7 @@
 			};
 			name = Release;
 		};
-		AB863C8F2CC1A80D00FD6486 /* Debug */ = {
+		ABFBA4CC2CDAC963009168FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -480,16 +480,16 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ayyanmalik.ParkifyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "ayyanmalik.UNLV-PARKIFYTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Parkify.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Parkify";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UNLV PARKIFY.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/UNLV PARKIFY";
 			};
 			name = Debug;
 		};
-		AB863C902CC1A80D00FD6486 /* Release */ = {
+		ABFBA4CD2CDAC963009168FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -499,16 +499,16 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ayyanmalik.ParkifyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "ayyanmalik.UNLV-PARKIFYTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Parkify.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Parkify";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UNLV PARKIFY.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/UNLV PARKIFY";
 			};
 			name = Release;
 		};
-		AB863C922CC1A80D00FD6486 /* Debug */ = {
+		ABFBA4CF2CDAC963009168FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -516,16 +516,16 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ayyanmalik.ParkifyUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "ayyanmalik.UNLV-PARKIFYUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Parkify;
+				TEST_TARGET_NAME = "UNLV PARKIFY";
 			};
 			name = Debug;
 		};
-		AB863C932CC1A80D00FD6486 /* Release */ = {
+		ABFBA4D02CDAC963009168FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -533,55 +533,55 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ayyanmalik.ParkifyUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "ayyanmalik.UNLV-PARKIFYUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Parkify;
+				TEST_TARGET_NAME = "UNLV PARKIFY";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AB863C622CC1A80C00FD6486 /* Build configuration list for PBXProject "Parkify" */ = {
+		ABFBA49F2CDAC963009168FC /* Build configuration list for PBXProject "UNLV PARKIFY" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AB863C892CC1A80D00FD6486 /* Debug */,
-				AB863C8A2CC1A80D00FD6486 /* Release */,
+				ABFBA4C62CDAC963009168FC /* Debug */,
+				ABFBA4C72CDAC963009168FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AB863C8B2CC1A80D00FD6486 /* Build configuration list for PBXNativeTarget "Parkify" */ = {
+		ABFBA4C82CDAC963009168FC /* Build configuration list for PBXNativeTarget "UNLV PARKIFY" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AB863C8C2CC1A80D00FD6486 /* Debug */,
-				AB863C8D2CC1A80D00FD6486 /* Release */,
+				ABFBA4C92CDAC963009168FC /* Debug */,
+				ABFBA4CA2CDAC963009168FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AB863C8E2CC1A80D00FD6486 /* Build configuration list for PBXNativeTarget "ParkifyTests" */ = {
+		ABFBA4CB2CDAC963009168FC /* Build configuration list for PBXNativeTarget "UNLV PARKIFYTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AB863C8F2CC1A80D00FD6486 /* Debug */,
-				AB863C902CC1A80D00FD6486 /* Release */,
+				ABFBA4CC2CDAC963009168FC /* Debug */,
+				ABFBA4CD2CDAC963009168FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AB863C912CC1A80D00FD6486 /* Build configuration list for PBXNativeTarget "ParkifyUITests" */ = {
+		ABFBA4CE2CDAC963009168FC /* Build configuration list for PBXNativeTarget "UNLV PARKIFYUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AB863C922CC1A80D00FD6486 /* Debug */,
-				AB863C932CC1A80D00FD6486 /* Release */,
+				ABFBA4CF2CDAC963009168FC /* Debug */,
+				ABFBA4D02CDAC963009168FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = AB863C5F2CC1A80C00FD6486 /* Project object */;
+	rootObject = ABFBA49C2CDAC963009168FC /* Project object */;
 }

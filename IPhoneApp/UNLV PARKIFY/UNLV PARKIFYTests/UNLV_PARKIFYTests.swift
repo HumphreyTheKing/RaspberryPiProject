@@ -1,14 +1,14 @@
 //
-//  ParkifyTests.swift
-//  ParkifyTests
+//  UNLV_PARKIFYTests.swift
+//  UNLV PARKIFYTests
 //
-//  Created by Ayyan Malik on 10/17/24.
+//  Created by Ayyan Malik on 11/5/24.
 //
 
 import XCTest
-@testable import Parkify
+@testable import UNLV_PARKIFY
 
-final class ParkifyTests: XCTestCase {
+final class UNLV_PARKIFYTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

@@ -1,14 +1,14 @@
 //
-//  ParkifyApp.swift
-//  Parkify
+//  UNLV_PARKIFYApp.swift
+//  UNLV PARKIFY
 //
-//  Created by Ayyan Malik on 10/17/24.
+//  Created by Ayyan Malik on 11/5/24.
 //
 
 import SwiftUI
 
 @main
-struct ParkifyApp: App {
+struct UNLV_PARKIFYApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

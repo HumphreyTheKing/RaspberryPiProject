@@ -1,13 +1,13 @@
 //
-//  ParkifyUITestsLaunchTests.swift
-//  ParkifyUITests
+//  UNLV_PARKIFYUITestsLaunchTests.swift
+//  UNLV PARKIFYUITests
 //
-//  Created by Ayyan Malik on 10/17/24.
+//  Created by Ayyan Malik on 11/5/24.
 //
 
 import XCTest
 
-final class ParkifyUITestsLaunchTests: XCTestCase {
+final class UNLV_PARKIFYUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
