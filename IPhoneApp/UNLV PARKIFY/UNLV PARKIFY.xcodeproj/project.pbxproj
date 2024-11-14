@@ -14,6 +14,8 @@
 		ABFBA4B92CDAC963009168FC /* UNLV_PARKIFYTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBA4B82CDAC963009168FC /* UNLV_PARKIFYTests.swift */; };
 		ABFBA4C32CDAC963009168FC /* UNLV_PARKIFYUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBA4C22CDAC963009168FC /* UNLV_PARKIFYUITests.swift */; };
 		ABFBA4C52CDAC963009168FC /* UNLV_PARKIFYUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBA4C42CDAC963009168FC /* UNLV_PARKIFYUITestsLaunchTests.swift */; };
+		ABFBA4D22CDAD4EA009168FC /* High-Resolution-Color-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = ABFBA4D12CDAD4EA009168FC /* High-Resolution-Color-Logo.png */; };
+		ABFFA5F92CE680670041602F /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFFA5F82CE680670041602F /* mainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,9 @@
 		ABFBA4BE2CDAC963009168FC /* UNLV PARKIFYUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UNLV PARKIFYUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABFBA4C22CDAC963009168FC /* UNLV_PARKIFYUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNLV_PARKIFYUITests.swift; sourceTree = "<group>"; };
 		ABFBA4C42CDAC963009168FC /* UNLV_PARKIFYUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNLV_PARKIFYUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		ABFBA4D12CDAD4EA009168FC /* High-Resolution-Color-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "High-Resolution-Color-Logo.png"; path = "../../../../../../Downloads/High-Resolution-Color-Logo.png"; sourceTree = "<group>"; };
+		ABFBA4D32CDAD80F009168FC /* High-Resolution-Color-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "High-Resolution-Color-Logo.png"; sourceTree = "<group>"; };
+		ABFFA5F82CE680670041602F /* mainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +101,9 @@
 			children = (
 				ABFBA4A72CDAC963009168FC /* UNLV_PARKIFYApp.swift */,
 				ABFBA4A92CDAC963009168FC /* ContentView.swift */,
+				ABFFA5F82CE680670041602F /* mainView.swift */,
 				ABFBA4AB2CDAC963009168FC /* Assets.xcassets */,
+				ABFBA4D32CDAD80F009168FC /* High-Resolution-Color-Logo.png */,
 				ABFBA4AD2CDAC963009168FC /* Preview Content */,
 			);
 			path = "UNLV PARKIFY";
@@ -105,6 +112,7 @@
 		ABFBA4AD2CDAC963009168FC /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				ABFBA4D12CDAD4EA009168FC /* High-Resolution-Color-Logo.png */,
 				ABFBA4AE2CDAC963009168FC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -233,6 +241,7 @@
 			files = (
 				ABFBA4AF2CDAC963009168FC /* Preview Assets.xcassets in Resources */,
 				ABFBA4AC2CDAC963009168FC /* Assets.xcassets in Resources */,
+				ABFBA4D22CDAD4EA009168FC /* High-Resolution-Color-Logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABFFA5F92CE680670041602F /* mainView.swift in Sources */,
 				ABFBA4AA2CDAC963009168FC /* ContentView.swift in Sources */,
 				ABFBA4A82CDAC963009168FC /* UNLV_PARKIFYApp.swift in Sources */,
 			);
