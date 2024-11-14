@@ -1,117 +1,107 @@
-import React, { useEffect, useState } from 'react';
-import { Loader } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-
-const ParkingApp = () => {
-  const [map, setMap] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const apiKey = "AIzaSyB5GVqZRteRz2N6TwIZ20H3emFxHAOcRaw";
-
-  const garages = [
-    {
-      title: "Cottage Grove Parking Garage",
-      address: "1067 Cottage Grove Ave, Las Vegas, NV 89119",
-      status: "High Traffic",
-      spots: 540,
-      position: { lat: 36.1112, lng: -115.1401 }
-    },
-    {
-      title: "Tropicana Parking Garage",
-      address: "12 Wilbur St, Las Vegas, NV 89119",
-      status: "High Traffic",
-      spots: 960,
-      position: { lat: 36.103, lng: -115.1431 }
-    },
-    {
-      title: "University Gateway Parking Garage",
-      address: "1280 Dorothy Ave, Las Vegas, NV 89119",
-      status: "Low Traffic",
-      spots: 1023,
-      position: { lat: 36.10342, lng: -115.136193 }
-    }
-  ];
-
-  useEffect(() => {
-    const loadMap = async () => {
-      const { Map } = await window.google.maps.importLibrary("maps");
-      const { AdvancedMarkerElement } = await window.google.maps.importLibrary("marker");
-      
-      const position = { lat: 36.1077863, lng: -115.1453609 };
-      
-      const newMap = new Map(document.getElementById("map"), {
-        zoom: 15.7,
-        center: position,
-        mapId: 'deb598f8aa025a7f',
-      });
-
-      garages.forEach(garage => {
-        new AdvancedMarkerElement({
-          position: garage.position,
-          map: newMap,
-          title: garage.title
-        });
-      });
-
-      setMap(newMap);
-      setLoading(false);
-    };
-
-    const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=maps,marker&v=beta`;
-    script.async = true;
-    script.defer = true;
-    script.onload = loadMap;
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, []);
-
-  const GarageCard = ({ garage }) => (
-    <Card className="mb-4 hover:bg-gray-50 cursor-pointer">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-center">{garage.title}</CardTitle>
-      </CardHeader>
-      <CardContent className="text-center">
-        <p className="italic mb-4">{garage.address}</p>
-        <p className="mb-2">Status: {garage.status}</p>
-        <p>Parking Spots Remaining: {garage.spots}</p>
-      </CardContent>
-    </Card>
-  );
-
-  return (
-    <div className="h-screen flex flex-col">
-      <header className="bg-red-700/90 h-[50px]">
-        <div className="container h-full ml-[10%]">
-          <a href="#" className="h-full w-[100px] text-gray-100 flex items-center justify-center hover:bg-red-800">
-            Parkify
-          </a>
-        </div>
-      </header>
-
-      <div className="flex flex-1 lg:flex-row flex-col">
-        <div className="lg:w-2/3 p-4 h-[500px] lg:h-auto">
-          {loading ? (
-            <div className="h-full flex items-center justify-center">
-              <Loader className="animate-spin" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parkify</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <section class="upper-body">
+        <header class="bar navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <span class="name">
+                        Parkify
+                    </span>
+                </a>
             </div>
-          ) : (
-            <div id="map" className="h-full rounded-lg shadow-md" />
-          )}
-        </div>
-        
-        <div className="lg:w-1/3 p-4 overflow-y-auto">
-          <div className="space-y-4">
-            {garages.map((garage, index) => (
-              <GarageCard key={index} garage={garage} />
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+        </header>
+        <article class="content">
+            <div class="map-area">
+                <div class="map"></div> <!-- Google Map Goes Here -->
+            </div>
+            <div class="garage-area">
+                <div class="garage-wrap">
+                         <div class="garage-info">
+                            <h2>Cottage Grove Parking Garage</h2>
+                            <hr>
+                            <div class="info">
+                                <div class="addr">1067 Cottage Grove Ave, Las Vegas, NV 89119<br><br></div>
+                                <p class="status">Status: High Traffic</p>
+                                <p class="spots">Parking Spots Remaining: 540</p> 
+                            </div>
+                         </div>  
 
-export default ParkingApp;
+                        <div class="garage-info">
+                            <h2>Tropicana Parking Garage</h2>
+                            <hr>
+                            <div class="info">
+                                <div class="addr">12 Wilbur St, Las Vegas, NV 89119<br><br></div>
+                                <p class="status">Status: High Traffic</p>
+                                <p class="spots">Parking Spots Remaining: 960</p> 
+                            </div>
+                        </div> 
+
+                        <div class="garage-info">
+                            <h2>University Gateway Parking Garage</h2>
+                            <hr>
+                            <div class="info">
+                                <p class="addr">1280 Dorothy Ave, Las Vegas, NV 89119<br><br></p> 
+                                <p class="status">Status: Low Traffic</p>
+                                <p class="spots">Parking Spots Remaining: 1023</p>
+                            </div>
+                        </div> 
+                </div>
+            </div>            
+        </article>
+    </section>
+    <script src="script.js"></script>
+
+    <script>
+                fetch('/api/parking-status')
+            .then(response => response.json())
+            .then(data => {
+                const statusElement = document.getElementById('parkingStatus');
+                statusElement.innerHTML = `
+                    <p>Total Floors: ${data.total_floors}</p>
+                    <p>Total Cars: ${data.total_cars}</p>
+                `;
+
+                // Create chart
+                const ctx = document.getElementById('parkingChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: Object.keys(data.floor_counts),
+                        datasets: [{
+                            label: 'Cars per Floor',
+                            data: Object.values(data.floor_counts),
+                            backgroundColor: 'rgba(75, 192, 192, 0.6)'
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+
+        fetch('/api/recent-events')
+            .then(response => response.json())
+            .then(events => {
+                const eventsElement = document.getElementById('recentEvents');
+                events.forEach(event => {
+                    const li = document.createElement('li');
+                    li.textContent = `${event.event_type} on floor ${event.floor_number} at ${event.timestamp}`;
+                    eventsElement.appendChild(li);
+                });
+            });
+  </script>          
+</body>
+</html>
