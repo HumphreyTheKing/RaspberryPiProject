@@ -8,6 +8,66 @@
 import SwiftUI
 import MapKit
 import CoreLocation
+import CoreMotion
+import UserNotifications
+
+//this is to check how fast app user is moving
+//to check if driving or not
+//uses coreMotion library package
+//creating class for driveMode ability
+class DriveModeViewModel: ObservableObject {
+    private let motionDetector = CMMotionActivityManager()
+    
+    //boolean to set actual if driving or not
+    @Published var isDriving = false // Indicates whether driving is detected
+    
+    //if app detects too much motion, may mean user is driving
+    func startMonitoring() {
+        if CMMotionActivityManager.isActivityAvailable() {
+            motionDetector.startActivityUpdates(to: OperationQueue.main) { [weak self] activity in
+                guard let self = self else { return }
+                //if true, app shouldn't be available, should pop up with a notification
+                //to confirm if user is driving or not
+                if let activity = activity, activity.automotive {
+                    DispatchQueue.main.async {
+                        self.isDriving = true
+                    }
+                } else {
+                    //if false, user is fine to use app
+                    DispatchQueue.main.async {
+                        self.isDriving = false // Unblock functionality
+                    }
+                }
+            }
+        }
+    }
+    
+    //notification function - one option, "Im not driving"
+    //based on apple's native im not driving notification
+    private func sendMotionNotification() {
+        let notDrivingAction = UNNotificationAction(
+            identifier: "NOT_ACTUALLY_DRIVING",
+            title: "I'm Not Driving",
+            options: [.foreground]
+        )
+    }
+    
+    //function that actuallly sends notificaiton
+    private func sendDriveModeNotification() {
+        //made unmutable to make sure you cant skip it
+        let content = UNMutableNotificationContent()
+        content.title = "Driving Detected"
+        content.body = "Driving Detected - For your safety, Parkify is only available when not driving"
+        content.categoryIdentifier = "DRIVE_MODE"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        
+       _ = UNNotificationRequest(identifier: "DRIVE_MODE_ALERT", content: content, trigger: trigger)
+
+    }
+}
+
+
 
 struct ParkingGarage: Identifiable {
     let id = UUID()
@@ -45,9 +105,10 @@ class ParkingViewModel: ObservableObject {
 }
 
 struct ContentView: View {
-    @StateObject private var viewModel = ParkingViewModel()
+
+    @StateObject var viewModel = ParkingViewModel()
     @State private var isLoading = true
-    
+
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
@@ -98,6 +159,7 @@ struct ContentView: View {
             .navigationBarHidden(true)
         }
     }
+    
     
     // Map section view
     private var mapSection: some View {
@@ -237,8 +299,11 @@ struct MapView: UIViewRepresentable {
     }
 }
 
+
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+
