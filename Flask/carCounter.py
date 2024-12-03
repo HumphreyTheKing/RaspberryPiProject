@@ -9,7 +9,7 @@ app = Flask('Parkify')
 car_count = 0
 
 # to get data from arduino
-arduino = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+arduino = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 
 # flask webserver, everytime count is updated this runs
 @app.route('/update_count', methods=['POST'])
