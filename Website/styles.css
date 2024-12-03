@@ -48,6 +48,7 @@ header {
     padding: 0;
     width: 100px;
     color: #eee;
+    font-size: 26px;
 }
 
 .navbar-brand:hover {
@@ -85,7 +86,8 @@ header {
 
 /* container for the information bubbles  */
 .garage-wrap{
-    padding: 10% 15px 10%;
+    padding: 5% 15px 10%;
+    margin: 5% 0;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -94,9 +96,12 @@ header {
 
 /* information bubbles about each parking garage */
 .garage-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     padding: 5px;
-    min-height: 200px;
-    height: 30%;
+    height: 300px;
     margin: 10px 0;
     border-radius: 10px;
     border: 1px solid rgba(231, 231, 231, 0.816);
@@ -108,21 +113,29 @@ header {
     cursor: pointer;
 }
 
-h2 {
+h1 {
+    font-size: 32px;
     text-align: center;
     margin: 0;
+    flex: 0 0 auto;
 }
 
 hr {
     margin: 5px;
+    width: 94%;
+    flex: 0 0 auto;
 }
 
 .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-size: 16px;;
     padding: 10px;
-    height: 80%;
     overflow: hidden;
     text-align: center;
+    flex: 1;
 }
 
 p {
@@ -131,6 +144,33 @@ p {
 
 .addr {
     font-style: italic;
+}
+
+.percentRemainder {
+    margin-top: 10px;
+    margin-bottom: -8px;
+}
+
+.card__progress progress {
+    width: 300px;
+    height: 6px;
+    border-radius: 100px;
+    background-color: rgb(229, 229, 229);
+}
+
+.card__progress progress::-webkit-progress-value {
+    background-color: rgb(0, 235, 51);
+    border-radius: 100px;
+}
+
+.card__progress progress::-moz-progress-bar {
+    background-color: rgb(0, 235, 51);
+    border-radius: 100px;
+}
+
+.card__progress progress::-ms-fill {
+    background-color: rgb(0, 235, 51);
+    border-radius: 100px;
 }
 
 /* Set dimensions for smaller displays <= 960px */
@@ -163,8 +203,13 @@ p {
         height: auto;
         overflow-y: visible;
     }
+    
+    .garage-wrap {
+        margin: 0;
+    }
 
     .garage-info {
         margin-bottom: 10px;
+        height: 30%;
     }
 }
