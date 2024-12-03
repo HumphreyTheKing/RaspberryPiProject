@@ -45,7 +45,7 @@ class DriveModeViewModel: ObservableObject {
     //notification function - one option, "Im not driving"
     //based on apple's native im not driving notification
     private func sendMotionNotification() {
-        let notDrivingAction = UNNotificationAction(
+        let _ = UNNotificationAction(
             identifier: "NOT_ACTUALLY_DRIVING",
             title: "I'm Not Driving",
             options: [.foreground]
@@ -75,7 +75,14 @@ struct ParkingGarage: Identifiable {
     let address: String
     let status: String
     let spots: Int
+    let spotsFilled: Int //adding in extra variable for more detailed view
     let coordinate: CLLocationCoordinate2D
+    
+    
+    // Calculates percentage of spots filled for progress bar
+    var percentageFilled: Double {
+        return Double(spotsFilled) / Double(spots)
+    }
 }
 
 class ParkingViewModel: ObservableObject {
@@ -84,21 +91,24 @@ class ParkingViewModel: ObservableObject {
             title: "Cottage Grove Parking Garage",
             address: "1067 Cottage Grove Ave, Las Vegas, NV 89119",
             status: "High Traffic",
-            spots: 540,
+            spots: 2031,
+            spotsFilled: 1700,
             coordinate: CLLocationCoordinate2D(latitude: 36.1112, longitude: -115.1401)
         ),
         ParkingGarage(
             title: "Tropicana Parking Garage",
             address: "12 Wilbur St, Las Vegas, NV 89119",
             status: "High Traffic",
-            spots: 960,
+            spots: 1752,
+            spotsFilled: 956,
             coordinate: CLLocationCoordinate2D(latitude: 36.103, longitude: -115.1431)
         ),
         ParkingGarage(
             title: "University Gateway Parking Garage",
             address: "1280 Dorothy Ave, Las Vegas, NV 89119",
             status: "Low Traffic",
-            spots: 1023,
+            spots: 534,
+            spotsFilled: 255,
             coordinate: CLLocationCoordinate2D(latitude: 36.10342, longitude: -115.136193)
         )
     ]
@@ -223,9 +233,25 @@ struct GarageCard: View {
                     Text("Parking Spots:")
                         .fontWeight(.medium)
                     Spacer()
-                    Text("\(garage.spots)")
+                    //changed text showing to include a fraction
+                    //instead of just how many spots are avail
+                    Text("\(garage.spotsFilled)/\(garage.spots) filled")
                 }
                 .font(.subheadline)
+            // creating VStack element for progress bar
+              VStack(alignment: .leading) {
+                  Text("Usage: \(Int(garage.percentageFilled * 100))%")
+                      .font(.subheadline)
+                      .padding(.bottom, 4)
+                  
+                  //actual code for progress bar
+                  ProgressView(value: garage.percentageFilled)
+                      .progressViewStyle(LinearProgressViewStyle())
+                      .tint(colorForPercentage(garage.percentageFilled))
+              }
+              .padding(.top, 8)
+                
+                
             }
             .padding(16)
         }
@@ -236,6 +262,20 @@ struct GarageCard: View {
             withAnimation(.easeInOut(duration: 0.2)) {
                 isHovered = hovering
             }
+        }
+    }
+    
+    
+    //function to change text color for percent full
+    //helps visually show differences to students
+    private func colorForPercentage(_ percentage: Double) -> Color {
+        switch percentage {
+        case 0..<0.5:
+            return .green // Between 0 and 50 = green
+        case 0.5..<0.8: // 50 - 80 = yellow
+            return .yellow
+        default: //anything above 80 is red
+            return .red
         }
     }
 }
