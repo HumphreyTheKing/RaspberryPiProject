@@ -158,19 +158,28 @@ p {
     background-color: rgb(229, 229, 229);
 }
 
-.card__progress progress::-webkit-progress-value {
-    background-color: rgb(0, 235, 51);
-    border-radius: 100px;
+/* for green, over 50% avail */
+.card__progress progress.progress-green::-webkit-progress-value {
+    background-color: rgb(0, 235, 51); 
+}
+.card__progress progress.progress-green::-moz-progress-bar {
+    background-color: rgb(0, 235, 51); 
 }
 
-.card__progress progress::-moz-progress-bar {
-    background-color: rgb(0, 235, 51);
-    border-radius: 100px;
+/* Orange/Yellowing, 20-49% avail */
+.card__progress progress.progress-orange::-webkit-progress-value {
+    background-color: rgb(255, 187, 61);
+}
+.card__progress progress.progress-orange::-moz-progress-bar {
+    background-color: rgb(255, 165, 0); 
 }
 
-.card__progress progress::-ms-fill {
-    background-color: rgb(0, 235, 51);
-    border-radius: 100px;
+/* Red, less than 20% available */
+.card__progress progress.progress-red::-webkit-progress-value {
+    background-color: rgb(255, 0, 0); 
+}
+.card__progress progress.progress-red::-moz-progress-bar {
+    background-color: rgb(255, 0, 0); 
 }
 
 /* Set dimensions for smaller displays <= 960px */

@@ -87,8 +87,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const percentRemainderElement = garageInfo.querySelector('.percentRemainder');
         percentRemainderElement.textContent = `${percentageRemaining}% Capacity`;
 
+
         // Update the progress bar value
         const progressElement = garageInfo.querySelector('progress');
         progressElement.value = percentageRemaining;
+
+       // Color changing statement, dynamically changes color of progress bar based on percentage of spots available
+       if (percentageRemaining > 50) {
+        progressElement.classList.add('progress-green');
+        progressElement.classList.remove('progress-orange', 'progress-red');
+    } else if (percentageRemaining > 20) {
+        progressElement.classList.add('progress-orange');
+        progressElement.classList.remove('progress-green', 'progress-red');
+    } else {
+        progressElement.classList.add('progress-red');
+        progressElement.classList.remove('progress-green', 'progress-orange');
+    }
     });
 });

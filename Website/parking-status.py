@@ -35,11 +35,6 @@ def update_count():
     car_count = request.json.get('count', 0)
     return "Car count updated", 200
 
-# gets the actual count of the cars
-@app.route('api/get_count', methods=['GET'])
-def get_count():
-    global car_count
-    return jsonify({'count': car_count})
 
 @app.route('/api/recent_events')
 def recent_events():
