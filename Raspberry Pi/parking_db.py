@@ -1,7 +1,11 @@
 import sqlite3
 from datetime import datetime
+import serial #for reading arduino inputs
+import time #yeah its time
 
 DB_NAME = 'parking.db'
+SERIAL_PORT = '/dev/ttyACM0' #specific arduino
+BAUD_RATE = 9600
 
 def init_db(floors, spaces_per_floor):
     """Initialize the database with necessary tables for a multi-floor parking system."""
@@ -150,6 +154,27 @@ def get_parking_status():
         'floor_counts': floor_counts
     }
 
+def process_arduino_input():
+    """Process inputs from the Arduino to update the database."""
+    ser = serial.Serial(SERIAL_PORT, BAUD_RATE, timeout=1)
+    time.sleep(2) #give delay for connection to stabilize
+    while True:
+        if ser.in_waiting > 0:
+            line = ser.readline().decode('utf-8').strip()
+            print(f"Received: {line}") #debugging output
+            #arse the input for event type and floor number
+            parts = line.split()
+            if len(parts) >= 2: #if input
+                event_type = parts[0]
+                floor = int(parts[1]) #initialize car parts
+                if event_type == "CarEnters": #if a car enters
+                    update_car_count(floor, 1)
+                elif event_type == "CarExits": #if a car exits after parsing input
+                    update_car_count(floor, -1)
+                elif event_type.startswith("Move"):
+                    from_floor, to_floor = map(int, event_type.split("_")[1:])
+                    move_car(from_floor, to_floor)
+
 def get_recent_events(limit=10):
     """Retrieve recent parking events."""
     conn = sqlite3.connect(DB_NAME)
@@ -170,9 +195,13 @@ def get_recent_events(limit=10):
 
 # Example usage:
 if __name__ == "__main__":
+    #initialize floor database
     spaces_per_floor = {1: 10, 2: 15, 3: 20}
     init_db(floors=3, spaces_per_floor=spaces_per_floor)
     print("Database initialized.")
+    #process arduino inputs and commands
+    print("Waiting for Arduino inputs...")
+    process_arduino_input()
     
     # Simulate some parking events
     update_car_count(1, 1)  # Car enters on floor 1
@@ -180,18 +209,17 @@ if __name__ == "__main__":
     move_car(1, 2)  # Car moves from floor 1 to 2
     move_car(2, 1)  # Car moves from floor 2 to 1
     update_car_count(1, -1)  # Car exits from floor 1
-    
     # Get and print current status
-    status = get_parking_status()
-    print(f"\nCurrent parking lot status:")
-    print(f"Total floors: {status['total_floors']}")
-    print(f"Total cars: {status['total_cars']}")
-    print("Cars per floor:")
-    for floor, data in status['floor_counts'].items():
-        print(f"  Floor {floor}: {data['occupied']}/{data['total']} cars ({data['percentage']}%)")
+    # status = get_parking_status()
+    # print(f"\nCurrent parking lot status:")
+    # print(f"Total floors: {status['total_floors']}")
+    # print(f"Total cars: {status['total_cars']}")
+    # print("Cars per floor:")
+    # for floor, data in status['floor_counts'].items():
+    #     print(f"  Floor {floor}: {data['occupied']}/{data['total']} cars ({data['percentage']}%)")
     
     # Get and print recent events
-    events = get_recent_events()
-    print("\nRecent events:")
-    for event in events:
-        print(f"{event['event_type']} on floor {event['floor_number']} at {event['timestamp']}")\
+    # events = get_recent_events()
+    # print("\nRecent events:")
+    # for event in events:
+    #    print(f"{event['event_type']} on floor {event['floor_number']} at {event['timestamp']}")\
