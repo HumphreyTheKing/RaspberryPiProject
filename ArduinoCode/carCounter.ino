@@ -1,6 +1,7 @@
 //duplicate for number of sensors this only assumes entrance counting would need to duplicate for exit
 #define TRIG_PIN 9 //based on our specific board
 #define ECHO_PIN 10
+
 #define DISTANCE_THRESHOLD 50
 #define HUMAN_TIME_THRESHOLD 200
 #define CAR_TIME_THRESHOLD 500
@@ -51,7 +52,8 @@ void loop() {
         if (isHuman) { //debugging information and printing
             Serial.println("Human Detected");
         } else {
-            Serial.println("Car Detected");
+            Serial.println("CarEnters"); //for database processing
+            Serial.println(SENSOR_ID);
         }
         delay(1000);
     }
