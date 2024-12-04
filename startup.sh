@@ -1,7 +1,11 @@
 #!/bin/bash
 
-#run the "ParkingLotInitializer.py" script
-python3 ParkingLotInitializer.py
+#open the browser to the specified URL
+chromium-browser --kiosk --app=https://unlvparkify.netlify.app &
 
-#run a placeholder script "placeholder.py"
-python3 placeholder.py
+#open Arduino IDE and load the carCounter.ino file
+arduino /home/pi/Documents/carCounter.ino &
+
+#run the Python database script
+python3 /RaspberryPi/parking_db.py &
+
