@@ -62,61 +62,74 @@ def update_car_count(floor, change):
     """Update the car count for a specific floor and the total count."""
     conn = sqlite3.connect(DB_NAME)
     c = conn.cursor()
-    
-    # Update floor occupancy
-    c.execute(
-        "UPDATE floor_data "
-        "SET occupied_spaces = occupied_spaces + ? "
-        "WHERE floor_number = ?", 
-        (change, floor)
-    )
 
-    #Update total floor count
-    c.execute(
-        "UPDATE parking_lot"
-        "SET total_cars = total_cars + ?"
-        "WHERE id + ?"
-        (change,)
-    )
-    
-    #log event
-    event_type = 'entry' if change > 0 else 'exit'
-    c.execute(
-        "INSERT INTO parking_events (event_type, floor_number, timestamp) "
-        "VALUES (?, ?, ?)"
-        (event_type, floor, datetime.now())
-    )
-    
-    conn.commit()
-    conn.close()
+    try:
+        # Update floor occupancy
+        c.execute(
+            "UPDATE floor_data "
+            "SET occupied_spaces = occupied_spaces + ? "
+            "WHERE floor_number = ?",
+            (change, floor)
+        )
+
+        # Update total car count in the parking lot
+        c.execute(
+            "UPDATE parking_lot "
+            "SET total_cars = total_cars + ? "
+            "WHERE id = 1",
+            (change,)
+        )
+
+        # Log the event
+        event_type = 'entry' if change > 0 else 'exit'
+        c.execute(
+            "INSERT INTO parking_events (event_type, floor_number, timestamp) "
+            "VALUES (?, ?, ?)",
+            (event_type, floor, datetime.now())
+        )
+
+        conn.commit()
+        print(f"Car count updated for floor {floor}: {'+1' if change > 0 else '-1'}")
+    except sqlite3.Error as e:
+        print(f"Database error during update_car_count: {e}")
+    finally:
+        conn.close()
     
 def move_car(from_floor, to_floor):
     """Move a car from one floor to another."""
     conn = sqlite3.connect(DB_NAME)
     c = conn.cursor()
-    
-    c.execute(
-        "UPDATE floor_data"
-        "SET ccupied_spaces = occupied_spaces - 1"
-        "WHERE floor_number = ?",
-        (from_floor,)
-    )
-    
-    c.execute(
-        "UPDATE floor_data"
-        "SET ccupied_spaces = occupied_spaces + 1"
-        "WHERE floor_number = ?",
-        (to_floor,)
-    )
-    
-    c.execute(
-        "INSERT INTO parking_events (event_type, floor_number timestamp) "
-        "VALUES (?, ?, ?)",
-        (f"move_{from_floor}_to_{to_floor}", to_floor, datetime.now())
-    )
-    
-    conn.commit()
-    conn.close()
+
+    try:
+        # Decrement the car count on the current floor
+        c.execute(
+            "UPDATE floor_data "
+            "SET occupied_spaces = occupied_spaces - 1 "
+            "WHERE floor_number = ? AND occupied_spaces > 0",
+            (from_floor,)
+        )
+
+        # Increment the car count on the target floor
+        c.execute(
+            "UPDATE floor_data "
+            "SET occupied_spaces = occupied_spaces + 1 "
+            "WHERE floor_number = ?",
+            (to_floor,)
+        )
+
+        # Log the movement event
+        c.execute(
+            "INSERT INTO parking_events (event_type, floor_number, timestamp) "
+            "VALUES (?, ?, ?)",
+            (f"move_{from_floor}_to_{to_floor}", to_floor, datetime.now())
+        )
+
+        conn.commit()
+        print(f"Car moved from floor {from_floor} to floor {to_floor}")
+    except sqlite3.Error as e:
+        print(f"Database error during move_car: {e}")
+    finally:
+        conn.close()
     
 def get_parking_status():
     """Retrieve the current status of the parking lot."""
@@ -156,24 +169,44 @@ def get_parking_status():
 
 def process_arduino_input():
     """Process inputs from the Arduino to update the database."""
-    ser = serial.Serial(SERIAL_PORT, BAUD_RATE, timeout=1)
-    time.sleep(2) #give delay for connection to stabilize
+    try:
+        ser = serial.Serial(SERIAL_PORT, BAUD_RATE, timeout=1)
+        time.sleep(2) #allow connection to stabilize
+    except serial.SerialException as e:
+        print(f"Error connecting to Arduino: {e}")
+        return
+
     while True:
-        if ser.in_waiting > 0:
-            line = ser.readline().decode('utf-8').strip()
-            print(f"Received: {line}") #debugging output
-            #arse the input for event type and floor number
-            parts = line.split()
-            if len(parts) >= 2: #if input
-                event_type = parts[0]
-                floor = int(parts[1]) #initialize car parts
-                if event_type == "CarEnters": #if a car enters
-                    update_car_count(floor, 1)
-                elif event_type == "CarExits": #if a car exits after parsing input
-                    update_car_count(floor, -1)
-                elif event_type.startswith("Move"):
-                    from_floor, to_floor = map(int, event_type.split("_")[1:])
-                    move_car(from_floor, to_floor)
+        try:
+            if ser.in_waiting > 0:
+                line = ser.readline().decode('utf-8').strip()
+                print(f"Received: {line}") #debugging output
+                
+                #parse the input for sensor ID and distance
+                parts = line.split()
+                if len(parts) >= 2:
+                    sensor_id = int(parts[0])#sensor ID (1 for entrance, 2 for exit)
+                    distance = int(parts[1])#distance from the sensor
+
+                    #check Sensor 1 for entrance events
+                    if sensor_id == 1 and distance < DISTANCE_THRESHOLD:
+                        update_car_count(1, 1)
+                        print(f"Car entered through Sensor {sensor_id}.")
+                    
+                    #check Sensor 2 for exit events
+                    elif sensor_id == 2 and distance < DISTANCE_THRESHOLD:
+                        update_car_count(1, -1)
+                        print(f"Car exited through Sensor {sensor_id}.")
+                    
+                    else:
+                        print(f"Ignored: Sensor {sensor_id}, Distance {distance} (out of range)")
+                else:
+                    print(f"Invalid input format: {line}")
+        except serial.SerialException as e:
+            print(f"Serial communication error: {e}")
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+
 
 def get_recent_events(limit=10):
     """Retrieve recent parking events."""
