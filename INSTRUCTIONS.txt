@@ -1,3 +1,8 @@
 Add all files into startup.sh that need to be run on startup.
 Placeholder.py is the example code in that file.
 When starting RaspberryPi do 'nano startup.sh' to start all programs/scripts
+
+Connection order
+Sound Sensor > Breadboard & Arduino
+Arduino > Breadboard & Raspberry Pi
+Raspberry Pi > Peripherals and Monitor
