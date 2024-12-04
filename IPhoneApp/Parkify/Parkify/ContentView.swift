@@ -117,56 +117,92 @@ class ParkingViewModel: ObservableObject {
 struct ContentView: View {
 
     @StateObject var viewModel = ParkingViewModel()
+    //necessary for triggering loading screen at app open
     @State private var isLoading = true
 
+    
     var body: some View {
-        NavigationView {
-            VStack(spacing: 0) {
-                // Header matching React's red header
-                HStack {
-                    Text("Parkify")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .padding(.leading)
-                    Spacer()
+        ZStack {
+            //if statement triggers loading
+            if isLoading {
+                ZStack {
+                    Color(.systemBackground)
+                        .ignoresSafeArea()
+                    VStack {
+                        //pulls up with logo image for a few seconds,
+                        //then switches to main app
+                        Image("logo.png") //loading screen for app!
+                                           .resizable()
+                                           .scaledToFit()
+                                           .frame(width: 300, height: 300)
+                                           .foregroundColor(.gray)
+                        ProgressView("Loading...")
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .scaleEffect(1.5)
+                            .padding()
+          
+                    }
                 }
-                .frame(height: 50)
-                .background(Color.red.opacity(0.9))
-                
-                // Main content area
-                if UIDevice.current.userInterfaceIdiom == .pad {
-                    // iPad layout (side by side like desktop React)
-                    GeometryReader { geometry in
-                        HStack(spacing: 0) {
-                            // Map section
-                            mapSection
-                                .frame(width: geometry.size.width * 0.67)
-                            
-                            // Cards section
-                            ScrollView {
-                                garageCards
+            } else {
+                NavigationView {
+                    VStack(spacing: 0) {
+                        // Header matching React's red header
+                        HStack {
+                            Text("Parkify")
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
+                                .padding(.leading)
+                            Spacer()
+                        }
+                        .frame(height: 50)
+                        .background(Color.red.opacity(0.9))
+                        
+                        // Main content area
+                        if UIDevice.current.userInterfaceIdiom == .pad {
+                            // iPad layout (side by side like desktop React)
+                            GeometryReader { geometry in
+                                HStack(spacing: 0) {
+                                    // Map section
+                                    mapSection
+                                        .frame(width: geometry.size.width * 0.67)
+                                    
+                                    // Cards section
+                                    ScrollView {
+                                        garageCards
+                                    }
+                                    .frame(width: geometry.size.width * 0.33)
+                                    .background(Color(.systemBackground))
+                                }
                             }
-                            .frame(width: geometry.size.width * 0.33)
-                            .background(Color(.systemBackground))
+                        } else {
+                            // iPhone layout (stacked like mobile React)
+                            ScrollView {
+                                VStack(spacing: 0) {
+                                    // Map section
+                                    mapSection
+                                        .frame(height: 500)
+                                    
+                                    // Cards section
+                                    garageCards
+                                        .padding()
+                                }
+                            }
                         }
                     }
-                } else {
-                    // iPhone layout (stacked like mobile React)
-                    ScrollView {
-                        VStack(spacing: 0) {
-                            // Map section
-                            mapSection
-                                .frame(height: 500)
-                            
-                            // Cards section
-                            garageCards
-                                .padding()
-                        }
-                    }
+                    .navigationBarHidden(true)
                 }
             }
-            .navigationBarHidden(true)
+        }
+        .onAppear {
+            //3 second delay for loading, gives time for map to load
+            //and for app to check if user is driving via motion detection
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                //not only does this line turn off the loading screen
+                //it fixes a bug where the map image was stuck to constantly
+                //loading
+                isLoading = false
+            }
         }
     }
     
