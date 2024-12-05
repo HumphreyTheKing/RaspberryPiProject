@@ -93,10 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
         progressElement.value = percentageRemaining;
 
        // Color changing statement, dynamically changes color of progress bar based on percentage of spots available
-       if (percentageRemaining > 50) {
+       if (percentageRemaining < 50) {
         progressElement.classList.add('progress-green');
         progressElement.classList.remove('progress-orange', 'progress-red');
-    } else if (percentageRemaining > 20) {
+    } else if (percentageRemaining < 70) {
         progressElement.classList.add('progress-orange');
         progressElement.classList.remove('progress-green', 'progress-red');
     } else {
